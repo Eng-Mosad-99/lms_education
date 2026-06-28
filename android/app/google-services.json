@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "775809081802",
+    "project_id": "lms-education-fd311",
+    "storage_bucket": "lms-education-fd311.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775809081802:android:6d3ecb10b220af380aaf33",
+        "android_client_info": {
+          "package_name": "com.example.lms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0HDTLB7r5C3OFyCBD9TQZbk56ec1Jk5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
