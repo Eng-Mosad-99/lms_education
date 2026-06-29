@@ -2,6 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/firebase_options.dart';
 
+import 'core/routes/generate_route.dart';
+import 'core/routes/routes.dart';
+import 'core/utils/app_colors.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -14,16 +18,15 @@ class LmsEducation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Fruit Hub',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: 'Cairo',
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("LMS"),
-        ),
-        body: const Center(child: Text("Welcome to LMS")),
-      ),
+      initialRoute: Routes.splashRoute,
+      onGenerateRoute: generateRoute,
     );
   }
 }
