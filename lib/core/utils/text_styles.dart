@@ -11,5 +11,9 @@ abstract class TextStyles {
     fontWeight: FontWeight.normal,
     fontSize: 16,
   );
+  static const TextStyle semiBold22 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 22,
+  );
 
 }

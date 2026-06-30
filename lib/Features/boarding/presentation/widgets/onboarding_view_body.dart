@@ -5,7 +5,7 @@ import 'package:lms/core/routes/routes.dart';
 import 'package:lms/core/services/shared_prefs.dart';
 import 'package:lms/core/utils/app_colors.dart';
 import 'package:lms/core/utils/text_styles.dart';
-import '../../../../core/utils/app_assets.dart';
+import 'onboarding_page_view.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -42,10 +42,10 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       child: Column(
         children: <Widget>[
           GestureDetector(
-              onTap: () {
-                      PrefsSingleton.setBool(KIsOnBoardingViewSeen, true);
-                      Navigator.pushReplacementNamed(context, Routes.loginRoute);
-                    },
+            onTap: () {
+              PrefsSingleton.setBool(KIsOnBoardingViewSeen, true);
+              Navigator.pushReplacementNamed(context, Routes.loginRoute);
+            },
             child: Align(
               alignment: AlignmentDirectional.topEnd,
               child: Container(
@@ -59,79 +59,11 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               ),
             ),
           ),
-          Expanded(child: OnboardingPageView(pageController: pageController)),
-        ],
-      ),
-    );
-  }
-}
-
-class OnboardingPageView extends StatelessWidget {
-  const OnboardingPageView({super.key, required this.pageController});
-  final PageController pageController;
-  @override
-  Widget build(BuildContext context) {
-    return PageView(
-      controller: pageController,
-      children: [
-        PageViewItem(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('مرحبًا بك في', ),
-              Text(
-                ' HUB',
-               
-              ),
-              Text(
-                'Fruit',
-               
-              ),
-            ],
-          ),
-          description:
-              'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
-          image: Assets.imagesOnboarding1,
-          
-          isVisible: true,
-        ),
-
-        
-      ],
-    );
-  }
-}
-
-
-
-class PageViewItem extends StatelessWidget {
-  const PageViewItem({
-    super.key,
-    required this.title,
-    required this.description,
-    required this.image,
-    
-    required this.isVisible,
-  });
-  final Widget title;
-  final String description, image;
-  final bool isVisible;
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-         
-              
-          const SizedBox(height: 60),
-          title,
-          const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 37),
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
-              style: TextStyles.regular16,
+          SizedBox(height: 50.h),
+          Expanded(
+            child: OnboardingPageView(
+              pageController: pageController,
+              index: currentPage,
             ),
           ),
         ],
