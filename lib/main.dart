@@ -28,9 +28,9 @@ class LmsEducation extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Fruit Hub',
+          title: 'LMS Education',
           theme: ThemeData(
-            fontFamily: 'Cairo',
+            fontFamily: 'Plus Jakarta Sans',
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppColors.primaryColor,
