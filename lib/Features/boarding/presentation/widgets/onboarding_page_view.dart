@@ -17,6 +17,7 @@ class OnboardingPageView extends StatelessWidget {
       itemCount: boardingList.length,
       itemBuilder: (context, index) {
         return PageViewItem(
+          index: index,
           image: boardingList[index].image,
           title: boardingList[index].title,
           description: boardingList[index].body,

@@ -6,6 +6,7 @@ import 'package:lms/core/routes/routes.dart';
 import 'package:lms/core/services/shared_prefs.dart';
 import 'package:lms/core/utils/app_colors.dart';
 import 'package:lms/core/utils/text_styles.dart';
+import 'package:lms/core/widgets/custom_button.dart';
 import '../../data/models/boarding_model.dart';
 import 'onboarding_page_view.dart';
 
@@ -68,19 +69,31 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               index: currentPage,
             ),
           ),
-          DotsIndicator(
-            dotsCount: boardingList.length,
-            position: currentPage.toDouble(),
-            decorator: DotsDecorator(
-              size: const Size(10, 10),
-             activeSize: const Size(9.0, 9.0),
-              activeColor: AppColors.primaryColor,
-              color: AppColors.darkGreyColor,
-              activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-            ),
+
+          CustomButtons(
+            text: boardingList.length - 1 == currentPage
+                ? 'Sign In'
+                : 'CONTINUE',
+            buttonText: 'Sign Up',
+            index: currentPage,
+            onPressed: () {
+              if (boardingList.length - 1 == currentPage) {
+                PrefsSingleton.setBool(KIsOnBoardingViewSeen, true);
+                Navigator.pushReplacementNamed(context, Routes.loginRoute);
+              } else {
+                pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                );
+              }
+            },
+            onSignUpPressed: () {
+              PrefsSingleton.setBool(KIsOnBoardingViewSeen, true);
+              Navigator.pushReplacementNamed(context, Routes.signUpRoute);
+            },
           ),
+
+          SizedBox(height: 30.h),
         ],
       ),
     );
