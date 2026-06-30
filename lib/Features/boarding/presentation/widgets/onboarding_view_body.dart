@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lms/core/constants/constants.dart';
@@ -5,6 +6,7 @@ import 'package:lms/core/routes/routes.dart';
 import 'package:lms/core/services/shared_prefs.dart';
 import 'package:lms/core/utils/app_colors.dart';
 import 'package:lms/core/utils/text_styles.dart';
+import '../../data/models/boarding_model.dart';
 import 'onboarding_page_view.dart';
 
 class OnboardingViewBody extends StatefulWidget {
@@ -64,6 +66,19 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             child: OnboardingPageView(
               pageController: pageController,
               index: currentPage,
+            ),
+          ),
+          DotsIndicator(
+            dotsCount: boardingList.length,
+            position: currentPage.toDouble(),
+            decorator: DotsDecorator(
+              size: const Size(10, 10),
+             activeSize: const Size(9.0, 9.0),
+              activeColor: AppColors.primaryColor,
+              color: AppColors.darkGreyColor,
+              activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
             ),
           ),
         ],
